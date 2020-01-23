@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="imagenes/icono.png">
+        <link rel="stylesheet" href="css/cssssh.css">
+        <title>SSH</title>
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div>
+                    <a href="index.html"><img src="imagenes/home.png" alt="paginaprincipal"></a>
+                </div>
+            </nav>
+            <main>
+                <h1>Ejercicios mediante SSH</h1>
+                <p>Primer paso, instalar SSH o como en nuestro caso, habilitarlo desde la
+                    Raspberry con "raspi config". después de eso, comprobaremos si está todo bien y
+                    mirar si el puerto en escucha es el que deseamos con "nmap localhost".
+                </p>
+                <img src="ssh/1.png" alt="Imagen 1">
+                <p>Seguidamente, nos meteremos por SSH en nuestra Raspberry con "ssh
+                    pi@ipderasperry" ej: ssh pi@192.168.18.211 después nos meteremos en el root con
+                    "sudo su" y crearemos los usuarios deseados con "adduser" y rellenaremos el
+                    nombre contraseña y todo lo que nos indique.
+                </p>
+                <img src="ssh/2.png" alt="Imagen 1">
+                <p>A continuación editaremos con "nano /etc/ssh/sshd_config" añadiremos
+                    AllowUser y el nombre de los usuarios que queremos que se puedan acceder
+                    mediante ssh, y con DenyUser los que no queremos que sean accesibles. (En
+                    nuestro caso, creamos 4 usuarios, 2 yo, y 2 mi compañero.)
+                </p>
+                <img src="ssh/3.png" alt="Imagen 1">
+                <p>Ahora, para que solo podamos acceder desde un equipo en concreto, debemos
+                    añadir con un espacio las IP´s de los equipos que queremos que puedan acceder a
+                    nuestra Raspberry.</p>
+                <img src="ssh/4.png" alt="Imagen 1">
+                <p>Ahora soño queda probar que podamos acceder a estos usuarios con SSH, con
+                    "ssh nombredeusuario@ipderasperry".</p>
+                <img src="ssh/6.png" alt="Imagen 1">
+                <p>Ahora abrimos WireShark y nos conectamos de nuevo a nuestra Raspberry para
+                    que salga tráfico, buscamos el paquete que más tamaño tenga, y miramos si la
+                    contraseña y el login van encriptados como se muestra aquí.</p>
+                <img src="ssh/5.png" alt="Imagen 1">
+            </main>
+            <footer>
+                <div>
+                    <a href="https://www.instagram.com/naxodesigns/" target="_blank">
+                        <img src="imagenes/instagram.png" alt="instagram"></a>
+                </div>
+                <div>
+                    <a href="https://www.twitter.com/naxo_maeso/" target="_blank">
+                        <img src="imagenes/twitter.png" alt="twitter"></a>
+                </div>
+                <div>
+                    <a href="mailto:nachomaeso123@gmail.com" target="_blank">
+                        <img src="imagenes/email.png" alt="email"></a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="imagenes/icono.png">
+        <link rel="stylesheet" href="css/http.css">
+        <title>EJERCICIOS HTTP</title>
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div class="divx">
+                    <a href="index.html"><img src="imagenes/home.png" alt="paginaprincipal"></a>
+                </div>
+            </nav>
+            <main>
+                <h1>Ejercicios HTTP</h1>
+                <ul>
+                    <a href="#ej1">
+                        <li>Ejercicio 1</li>
+                    </a>
+                    <a href="#ej2">
+                        <li>Ejercicio 2</li>
+                    </a>
+                </ul>
+                <h2 id="ej1">Ejercicio 1</h2>
+                <div>
+                    <h3>Lanza el sniffer wireshark y realiza una petición web.</h3>
+                    <p>Aquí vemos el paquete HTTP con su respectivo follow a TCP Stream.</p>
+                    <img src="http/1.png" alt="si">
+                </div>
+                <div>
+                    <h3>¿Qué protocolos de transporte, red y enlace utiliza HTTP?</h3>
+                    <p>Los protocolos que utiliza son:
+                        <ul>
+                            <li>En la de Trasporte, Ethernet2</li>
+                            <li>En la de Red, Ipv4</li>
+                            <li>En la de enlace, TCP</li>
+                            <li>Y HTTP</li>
+                        </ul>
+                    </p>
+                    <img src="http/2.png" alt="si">
+                </div>
+                <div>
+                    <h3>¿Qué puertos están implicados en la capa de transporte?</h3>
+                    <p>Están implicados el 80 como origen, y el 41118 como destino.</p>
+                    <img src="http/3.png" alt="si">
+                    <h4>¿Qué otros datos puedes obtener de esta capa?</h4>
+                    <p>Dentro de esta capa, se puede observar también, el tamaño del payload (el
+                        encapsulado), el número de secuencia, el tamaño de la ventana, etc...</p>
+                    <img src="http/4.png" alt="si">
+                </div>
+                <div>
+                    <h3>¿Cuáles son la direcciones IP implicadas en dicha petición?</h3>
+                    <p>Están implicadas estas IP´s, la 192.168.18.3 como origen y la 192.168.18.122</p>
+                    <img src="http/5.png" alt="si">
+                    <h4>¿Qué otros datos puedes obtener de esta capa?</h4>
+                    <p>Podemos observar, el total de la longitud, la identificación, el tiempo de
+                        vida, etc..</p>
+                    <img src="http/6.png" alt="si">
+                </div>
+                <div>
+                    <h3>¿Cuáles son la direcciones LAN implicadas en dicha petición?</h3>
+                    <p>Son las siguientes, f0:92:1c:f2:8c:e2 y bc:ae:c5:5e:39:fe</p>
+                    <img src="http/7.png" alt="si">
+                    <h4>¿Qué otros datos puedes obtener de esta capa?</h4>
+                    <p>La información del destino y del origen.</p>
+                </div>
+                <div>
+                    <h3>¿Queprotocolo se utiliza HTTP/1.0 o HTTP/1.1?</h3>
+                    <p>El HTTP/1.1</p>
+                    <img src="http/8.png" alt="si">
+                </div>
+                <div>
+                    <h3>Filtrando TCP, busca el acuerdo en tres bandas entre cliente y servidor.
+                        Interprétalo.</h3>
+                    <img src="http/9.png" alt="si">
+                    <p>El cliente conecta con el servidor, el servidor contesta y le manda la
+                        conexión mientras que le dice que le ha llegado el mensaje, y ahí le dice el
+                        cliente le dice que recibe la conexión, y comienza.</p>
+                </div>
+                <h2 id="ej2">Ejercicio 2</h2>
+                <div>
+                    <h3>Utililizando la captura del sniffer anterior indica el número deobjetos implicados en la petición web.</h3>
+                    <img src="http/GENERAL.png" alt="si">
+                    <p>Podemos observar, que en toda la captura del sniffer, hay involucrados 6 objetos, </p>
+                </div>
+                <div>
+                    <h3>¿Qué tipo de objetos son los implicados?</h3>
+                    <p>Son objetos HTTP, como la petición del icono, la de la propia web, las distintas imágenes qeu haya en la página, etc..</p>
+                </div>
+                <div>
+                    <h3>Realiza el mismo ejercicio pero usando firebug.</h3>
+                    <img src="http/10.png" alt="si">
+                    <p>Podemos observar la petición de varios objetos, que, en este caso, en esta capturas, todo son imágenes de la página <a href="https://www.game.es" target="_blank">game.es</a>
+                    <br>También podemos observar el tiempo que se ha tardado en responder a esas peticiones (a la derecha de la imagen.)</p>
+                </div>
+            </main>
+            <footer>
+                <div>
+                    <a href="https://www.instagram.com/naxodesigns/" target="_blank">
+                        <img src="imagenes/instagram.png" alt="instagram"></a>
+                </div>
+                <div>
+                    <a href="https://www.twitter.com/naxo_maeso/" target="_blank">
+                        <img src="imagenes/twitter.png" alt="twitter"></a>
+                </div>
+                <div>
+                    <a href="mailto:nachomaeso123@gmail.com" target="_blank">
+                        <img src="imagenes/email.png" alt="email"></a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

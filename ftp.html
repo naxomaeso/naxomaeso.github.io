@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="imagenes/icono.png">
+        <link rel="stylesheet" href="css/cssftp.css">
+        <title>FTP</title>
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div class="divx">
+                    <a href="index.html"><img src="imagenes/home.png" alt="paginaprincipal"></a>
+                </div>
+            </nav>
+            <main>
+                <h1>FTP</h1>
+                <div>
+                    <p>Para que nuestro servidor ftp anónimo para descargas, nos debemos de meter
+                        con nano en, "/etc/vsftpd.conf", y desde ahí, ponemos un "YES" en
+                        "anonymous_enable"</p>
+                    <img src="ftp/1.jpg" alt="si">
+                </div>
+                <div>
+                    <p>Para limitar el acceso a usuarios del sistema, debemos añadir la línea de
+                        código "chroot=YES".</p>
+                    <img src="ftp/2.jpg" alt="si">
+                    <p>Y para que se puedan descargar y subir archivos, simplemente debemos añadir
+                        la línea de código "download_enable=YES", ya que la línea de justo arriba ya
+                        estaba en "YES"</p>
+                    <img src="ftp/3.jpg" alt="3">
+                </div>
+                <div>
+                    <p>Para meternos en modo pasivo desde Windows, debemos de conectarnos al
+                        servidor con "ftp servidor" y después poner "quote pasv", y parea hacerlo desde
+                        Linux, simplemente debemos añadir un "-p" a "ftp servidor", como se muestra en
+                        la imagen.
+                        <br>
+                        (El "-A" que aparece, es para logearnos como anónimos).</p>
+                    <img src="ftp/4.jpg" alt="si">
+                </div>
+                <div>
+                    <p>Para añadir un mensaje de bienvenida, debemos bajar hasta que veamos lo de la
+                        imagen, le quitamos el "#" y le ponemos lo que queramos que salga de bienvenida.</p>
+                    <img src="ftp/5.jpg" alt="s">
+                </div>
+                <div>
+                    <p>Y ya tendríamos listo nustro servidor FTP, les muestro también una imagen
+                        donde se ve el servidor en modo consola y modo gráfico desde el navegador.</p>
+                    <img src="ftp/6.jpg" alt="si">
+                    <br>
+                    <img class="img61" src="ftp/6.1.jpg" alt="si">
+                </div>
+            </main>
+            <footer>
+                <div>
+                    <a href="https://www.instagram.com/naxodesigns/" target="_blank">
+                        <img src="imagenes/instagram.png" alt="instagram"></a>
+                </div>
+                <div>
+                    <a href="https://www.twitter.com/naxo_maeso/" target="_blank">
+                        <img src="imagenes/twitter.png" alt="twitter"></a>
+                </div>
+                <div>
+                    <a href="mailto:nachomaeso123@gmail.com" target="_blank">
+                        <img src="imagenes/email.png" alt="email"></a>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

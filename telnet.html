@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="imagenes/icono.png">
+        <link rel="stylesheet" href="css/telnet.css">
+        <title>Telnet</title>
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div>
+                    <a href="index.html"><img src="imagenes/home.png" alt="paginaprincipal"></a>
+                </div>
+            </nav>
+            <main>
+                <h1>Telnet</h1>
+                <p>A continuación veremos como instalar un servidor Telnet en una Rasperry Pi.</p>
+                <span>Yo me conecté por ssh ha mi Rasperry, peo se puede también hacer por VNC o
+                    desde la misma Rasperry. Bien, lo primero que debemos hacer es un "sudo apt
+                    update", y seguido de eso, debemos instalar Telnet. Debemos de poner el
+                    siguiente comando "sudo apt-get install telnetd", en mi caso, ya lo tenía
+                    instalado, y por eso sale así, en vuestro lugar, comenzará la instalación.
+                </span>
+                <div><img src="imagenes/telnet.png" alt="Imágen de la instalación de Telnet"></div>
+                <span>Después de la instalación, hacemos un "nmap localhost" para comprobar que
+                    esté instalado correctamente.</span>
+                <div><img src="imagenes/telnet2.png" alt="Imágen de la comprobación"></div>
+                <span>Una vez conseguido esto, debemos lanraz Wireshark, en mi caso, no tenía
+                    los permisos necesarios, y lo lancé con sudo "sudo wireshark", en el caso de que
+                    no lo tengas instalado, simplemente, haz "sudo apt install wireshark" Seguido a
+                    esto, nos conectamos desde una terminal nueva a nuestra Rasperry por telnet para
+                    generar tráfico que podamos atrapar con niestro wireshark, lo haremos con, en mi
+                    caso "telnet 192.168.18.211", donde esa IP es la IP de nuestra Rasperry.
+                </span>
+                <div><img
+                    src="imagenes/telnet3.png"
+                    alt="Imágen de la conexión telnet con mi Rasperry"></div>
+                <span>Una vez generado el tráfico necesario, nos saldrá en wireshark algo
+                    parecido a esto.</span>
+                <div><img src="imagenes/telnet4.png" alt="Imágen de wireshark"></div>
+                <span>Para mostrar la infomación de capas, simplemente abrimos el "menú" de la
+                    capa deseada y miramos.</span>
+                <div><img src="imagenes/telnet5.png" alt="Imágen de wireshark 2"></div>
+                <span>En mi caso, el tamaño de la capa es 293bytes.</span>
+                <div><img src="imagenes/telnet6.png" alt=""></div>
+                <span>Como es lógico, nuestro login y contraseña, viajan en texto plano, como se
+                    muestra aquí.</span>
+                <div><img src="imagenes/telnet7.png" alt="Imágen wireshark 3"></div>
+                <span>Ahora vamos a crear en nuestra Raspberry mediante SSH, un directorio, con
+                    "mkdir ejemplo", y un arcivo de texto, para después borrarlos con "rmdir" para
+                    el directorio y "rm" para el archivo de texto.
+                </span>
+                <div><img src="imagenes/telnet8.png" alt="Imágen de consola"></div>
+            </main>
+            <footer>
+                    <div>
+                        <a href="https://www.instagram.com/naxodesigns/" target="_blank">
+                            <img src="imagenes/instagram.png" alt="instagram"></a>
+                    </div>
+                    <div>
+                        <a href="https://www.twitter.com/naxo_maeso/" target="_blank">
+                            <img src="imagenes/twitter.png" alt="twitter"></a>
+                    </div>
+                    <div>
+                        <a href="mailto:nachomaeso123@gmail.com" target="_blank">
+                            <img src="imagenes/email.png" alt="email"></a>
+                    </div>
+                </footer>
+        </div>
+    </body>
+</html>

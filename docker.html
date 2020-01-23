@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="imagenes/icono.png">
+        <link rel="stylesheet" href="css/cssdocker.css">
+        <title>Docker</title>
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div>
+                    <a href="index.html"><img src="imagenes/home.png" alt="paginaprincipal"></a>
+                </div>
+            </nav>
+            <main>
+                <div>
+                    <h1>Docker</h1>
+                    <div>
+                        <p>
+                            Docker es un subsistema de virtualización que comparte con el anfitrión el
+                            kernel y el sistema de archivos. El anfitrión siempre es un sistema Linux. Si
+                            estamos en Windows o MAC, necesitaré una máquina virtual Windows Virtualización
+                            con VirtualBox o similar.
+                        </p>
+                        <p>Un software de máquinas virtuales neceta instalar el sistema operattivo
+                            completo. Ejemplos de sistemas de virtualización:
+                        </p>
+                        <ul>
+                            <li>VirtualBox (para múltiples plataformas)</li>
+                            <li>Parallels (para Windows)</li>
+                            <li>WMware (para múltiples plataformas)</li>
+                            <li>QEMU (para Linux)</li>
+                            <li>XEN (para UNIX/Linux)</li>
+                            <li>KVN (para UNIX/Linux)</li>
+                        </ul>
+                        <p>
+                            Un software de contenedores es un sistema de virtualización que comparte el
+                            kernel con el anfitrión. Se basa en el concepto de microservicios, donde tengo
+                            todos los programas instalados, configurados y funcionando, gracias a los
+                            contenedores. Ejemplos de software de contenedores:
+                        </p>
+                        <ul>
+                            <li>LXD</li>
+                            <li>Docker</li>
+                            <li>Kubernetes</li>
+                        </ul>
+                        <div><img id="docker" src="imagenes/imagen.png" alt="Imagen de Docker"></div>
+                        <p class="inblock">
+                            Para saber más sobre el tema:
+                        </p>
+                        <br>
+                        <ul id="id_ul">
+                            <li>
+                                <a href="https://www.docker.com/" target="_blank">Web Oficial de Docker</a>
+                            </li>
+                            <li>
+                                <a href="https://hub.docker.com/" target="_blank">Docker hub (listado contenedores)</a>
+                            </li>
+                            <li>
+                                <a href="https://www.docs.docker.com/get-started" target="_blank">Tutorial de Docker</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="dockerfile">
+                        <h2>Dockerfile</h2>
+                        <p>
+                            Un
+                            <span class="destacado">Dockerfile</span>
+                            es una receta para crear una imagen para una aplicación particular de Docker. DE
+                            ese modo podemos tomar una imagen base, intalarle programas, configurar esos
+                            programas y dejarla preparada para crear contenedores a partir de ella.
+                        </p>
+                        <p class="inblock">
+                            Veamos un ejemplo:
+                        </p>
+                        <br>
+                        <pre>
+        # use phusion/baseimage as base image.
+        from ubuntu:latest
+        maintainer marcus collier "dev@mjcollier.id.au"
+
+        # use baseimage-docker's init system.
+        cmd ["/sbin/my_init"]
+
+        # install prerequisites
+        run apt-get update; \
+            apt-get install -y udhcpd
+
+        # set up start up scripts
+        run mkdir /etc/service/udhcpd
+        add udhcpd.sh /etc/service/udhcpd/run
+        run chmod +x /etc/service/udhcpd/run
+
+        # clean up apt when done.
+        run apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+        # expose the port
+        #expose 67
+        #expose 67/udp
+        #expose 68
+        #expose 68/udp
+
+        # volumes
+        volume /data
+                        </pre>
+                    </div>
+        <div>
+            <p class="inblock">
+                creamos el archivo udhcpd.conf 
+            </p>
+            <br>
+            <pre>
+        # the start and end of the ip lease block
+        start	172.17.0.200
+        end		172.17.0.210
+
+        # the interface that udhcpd will use
+        interface	eth0
+        
+        opt	dns	192.168.18.3 8.8.8.8
+        option	subnet	255.255.0.0
+        opt	router	172.17.0.1
+        # opt	wins	192.168.10.10
+        # option	dns	129.219.13.81
+        # appended to above dns servers for a total of 3
+        option	domain	local
+        option	lease	864000 
+            </pre>
+            <div id="divje">
+                <p>
+                    crear el contenedor:
+                </p>
+                <p>
+                    docker build .
+                </p>
+                <p>
+                    lanzar el contenedor: docker run -d --net=host -p 67:67 -p 67:67/udp -p 68:68 -p 68:68/udp --name=dhcpd -v "ruta al directorio udhcpd"/data ubuntu:latest 
+                </p>
+                <p>
+                    abrir terminal en contenedor: docker exec -ti nombre_contenedor /bin/bash
+                </p>
+                </div>
+            </div>
+            </div>
+</main>
+<footer>
+    <div>
+        <a href="https://www.instagram.com/naxodesigns/" target="_blank">
+            <img src="imagenes/instagram.png" alt="instagram"></a>
+    </div>
+    <div>
+        <a href="https://www.twitter.com/naxo_maeso/" target="_blank">
+            <img src="imagenes/twitter.png" alt="twitter"></a>
+    </div>
+    <div>
+        <a href="mailto:nachomaeso123@gmail.com" target="_blank">
+            <img src="imagenes/email.png" alt="email"></a>
+   </div>
+</footer>
+</div>
+</body>
+</html>
