@@ -1,16 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/apache.css">
-    <title>APACHE</title>
-</head>
-<body>
-    <div id="container">
-        <h1>APACHE con DOCKER</h1>
-        <p>Lo primero qeu tenemos qeu hacer es preparar los archivos necesarios para </p>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/apache.css">
+        <title>APACHE</title>
+    </head>
+    <body>
+        <div id="container">
+            <nav>
+                <div>
+                    <a href="index.html"><img src="imagenes/home.png" alt="paginaprincipal"></a>
+                </div>
+            </nav>
+            <main>
+                <h1>APACHE</h1>
+                <p>Lo primero será hacer el árbol de directorios que usaremos.</p>
+                <img src="dockerapache/1.png" alt="1">
+                <p>Creamos un idex.html en public-html para que cuando lo tengamos todo funcionando, salga nuestra página web.</p>
+                <img src="dockerapache/2.png" alt="2">
+                <p>Hacemos un dockerfile, el cual, de momento solo tenemos que tener este contenido, ya lo iremos cambiado.</p>
+                <img src="dockerapache/3.png" alt="3">
+                <br>
+                <br>
+                <br>
+                <p>Hacemos la imagen que vamos a usar con "docker build -t mi-imagen-apache2 ." y ya podremos crear nuestro contenedor con "docker run -dit mi-container-apache mi-imagen-apache2"</p>
+                <br>
+                <h2>IMPORTANTE</h2>
+                <p>Cada vez que queramos guardar un cambio, habrá que re hacer la imagen y el contenedor para que el cambio se haga.</p>
+                <p>Para borrar el contenedor, primero tenemos que pararlo, y despues lo podremos borrar.</p>
+                <br>
+                <h3>Seguimos</h3>
+                <p>Nos vamos al docker file para añadir que copie el httpd.conf a nuestro contenedor, añadimos la siguiente línea.</p>
+                <img src="dockerapache/4.png" alt="4">
+                <br>
+                <p>Vamos a crear el archivo _htpasswd, para ello, instalamos "apache2-utils" y hacemos "htppasswd -c _htpasswd usuario"</p>
+                <img src="dockerapache/5.png" alt="5">
+                <p>Y seguidamente, volvemos a modificar el dockerfile para que este archivo se añada a la nueva imagen que creemos.</p>
+                <img src="dockerapache/6.png" alt="6">
+                <br>
+                <br>
+                <p>Vamos a añadir autenticación a nuestro Apache, nos metemos en httpd.conf y añladimos lo siguiente al final de todo.</p>
+                <img src="dockerapache/7.png" alt="7">
+                <p>También añadiremos autenticación DIGEST, para ello hacemos "htdigest -c .htdigest restringido pepe", añadimos lo siguiente en el dockerfile, y añadimos tmabién lo siguiente abajo de lo añadido antes en httpd.conf</p>
+                <img src="dockerapache/8.png" alt="8">
+                <img src="dockerapache/9.png" alt="9">
+                <br>
+                <p>Ahora, haremos un scrip que automatice el proceso de crear imagenes y contenedors, y le añadiremos para que tenga certificación SSL.</p>
+                <p>El archivo se debe de llamar reload.sh y tendrá lo siguiente.</p>
+                <img src="dockerapache/10.png" alt="10">
+                <p>Y como última modificación del dockerfile, añadimos lo siguiente.</p>
+                <img src="dockerapache/11.png" alt="11">
+                <h1>REVERSE</h1>
+                <p>Ahora vamos a hacer que apache funcione como reverse proxy.</p>
+                <br>
+                <p>Primero creamos este árbol de directorios.</p>
+                <img src="dockerapache/1r.png" alt="1r">
+                <p>Y creamos un index.html con el contenido que queramos.</p>
+                <img src="dockerapache/2r.png" alt="2r">
+                <p>Hacemos un dockerfile con este contenido.</p>
+                <img src="dockerapache/3r.png" alt="3r">
+                <p>Y un reload.sh con este contenido.</p>
+                <img src="dockerapache/4r.png" alt="4r">
+            </main>
+            <footer>
+                <div>
+                    <a href="https://www.instagram.com/naxodesigns/" target="_blank">
+                        <img src="imagenes/instagram.png" alt="instagram"></a>
+                </div>
+                <div>
+                    <a href="https://www.twitter.com/naxo_maeso/" target="_blank">
+                        <img src="imagenes/twitter.png" alt="twitter"></a>
+                </div>
+                <div>
+                    <a href="mailto:nachomaeso123@gmail.com" target="_blank">
+                        <img src="imagenes/email.png" alt="email"></a>
+                </div>
+            </footer>
+        </div>
+    </body>
 </html>
